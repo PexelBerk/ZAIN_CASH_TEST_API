@@ -12,5 +12,16 @@ class Transaction(models.Model):
     iat = models.IntegerField()
     exp = models.IntegerField()
     lang = models.TextField()
-    
+
+
+class Merchant(models.Model):
+    merchantId = models.TextField()
+    secret = models.TextField()
+    msisdn = models.TextField()
+    name = models.TextField()
+    number = models.TextField()
+
+
+
+
 

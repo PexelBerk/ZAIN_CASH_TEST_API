@@ -13,7 +13,7 @@ class Transaction(models.Model):
     iat = models.IntegerField()
     exp = models.IntegerField()
     lang = models.TextField()
-    operation_id = models.CharField(max_length=100)
+    operation_id = models.CharField(max_length=100, null=True)
 
     def generate_operation_id(self):
         length = 50  

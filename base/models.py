@@ -19,9 +19,14 @@ class Merchant(models.Model):
     secret = models.TextField()
     msisdn = models.TextField()
     name = models.TextField()
-    number = models.TextField()
+    phone = models.TextField()
 
 
-
+class Account(models.Model):
+    name = models.TextField()
+    phone = models.TextField()
+    pin = models.TextField()
+    otp = models.TextField()
+    
 
 

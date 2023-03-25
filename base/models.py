@@ -5,6 +5,13 @@ import random
 import string 
 
 
+class Merchant(models.Model):
+    merchantId = models.TextField()
+    secret = models.TextField()
+    msisdn = models.TextField()
+    name = models.TextField()
+    phone = models.TextField()
+
 class Transaction(models.Model):
     amount = models.IntegerField()
     serviceType = models.TextField()
@@ -14,6 +21,7 @@ class Transaction(models.Model):
     exp = models.IntegerField()
     lang = models.TextField()
     operation_id = models.CharField(max_length=100, null=True)
+    merchant = models.ForeignKey(Merchant, on_delete=models.CASCADE, null=True)
 
     def generate_operation_id(self):
         length = 50  
@@ -25,12 +33,7 @@ class Transaction(models.Model):
         self.save()
 
 
-class Merchant(models.Model):
-    merchantId = models.TextField()
-    secret = models.TextField()
-    msisdn = models.TextField()
-    name = models.TextField()
-    phone = models.TextField()
+
 
 
 class Account(models.Model):

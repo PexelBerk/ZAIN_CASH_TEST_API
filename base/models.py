@@ -28,8 +28,7 @@ class Transaction(models.Model):
         letters = string.ascii_lowercase + string.ascii_uppercase + "0123456789"
         result = ''.join((random.choice(letters)) for x in range(length))
         result += timezone.now().strftime(r"%Y%m%d%H%M%S")
-        self.token = result 
-        self.update_date = timezone.now()
+        self.operation_id = result 
         self.save()
 
 

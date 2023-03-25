@@ -55,3 +55,14 @@ def init_transaction(request):
         }
         return HttpResponseBadRequest(json.dumps(data))
 
+
+
+
+
+def pay_transaction(request):
+    return HttpResponse("paying happen here")
+
+
+
+
+

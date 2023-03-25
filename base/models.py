@@ -11,6 +11,7 @@ class Merchant(models.Model):
     msisdn = models.TextField()
     name = models.TextField()
     phone = models.TextField()
+    balance = models.IntegerField(default=0)
 
 class Account(models.Model):
     name = models.TextField()

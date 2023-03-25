@@ -28,12 +28,10 @@ def init_transaction(request):
             merchant=merchant,
             amount=data.get('amount'),
             serviceType=data.get("serviceType"),
-            msisdn=data.get("msisdn"),
             orderId=data.get("orderId"),
             redirectUrl=data.get("redirectUrl"),
             iat=data.get("iat"),
             exp=data.get("exp"),
-            lang=data.get("lang"),
         )
 
         transaction.generate_operation_id()
@@ -60,7 +58,26 @@ def init_transaction(request):
 
 
 def pay_transaction(request):
-    return HttpResponse("paying happen here")
+
+    try:
+        id = request.GET.get("id")
+    except:
+        return HttpResponse("no operation id provided")
+    
+    try:
+        transaction = Transaction.objects.get(operation_id=id)
+    except:
+        return HttpResponse("no transaction with this operation id")
+
+
+    context = {
+        "merchant":transaction.merchant,
+        "amount":transaction.amount,
+    }
+
+
+    return render(request, "payment.html", context)
+
 
 
 

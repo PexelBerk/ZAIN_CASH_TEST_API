@@ -38,6 +38,7 @@ class Transaction(models.Model):
 class Account(models.Model):
     name = models.TextField()
     phone = models.TextField()
+    balance = models.IntegerField(default=0)
     pin = models.TextField()
     otp = models.TextField()
 

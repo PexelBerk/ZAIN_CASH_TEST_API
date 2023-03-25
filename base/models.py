@@ -15,7 +15,7 @@ class Merchant(models.Model):
 class Transaction(models.Model):
     amount = models.IntegerField()
     serviceType = models.TextField()
-    orderid = models.TextField()
+    orderId = models.TextField()
     redirectUrl = models.TextField()
     iat = models.IntegerField()
     exp = models.IntegerField()

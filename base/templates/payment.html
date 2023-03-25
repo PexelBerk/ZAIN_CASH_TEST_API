@@ -8,7 +8,9 @@
 </head>
 <body>
     <h3>you will pay {{amount}} to {{merchant.name}}</h3>
-    <form action="" method="post">
+    <form action="{% url 'otp_confirmation' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="operation_id" hidden value="{{operation_id}}" id="">
         number: <input type="text" name="phone" id=""><br>
         pin: <input type="text" name="pin" id=""><br>
         <input type="submit" value="Pay">

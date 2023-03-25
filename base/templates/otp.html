@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP</title>
+</head>
+<body>
+    
+    balance: {{balance}} <br>
+    amount: {{amount}} <br> 
+
+    <form action="{% url 'check_otp' %}" method="post">
+        <input type="text" name="operation_id" hidden value="{{operation_id}}" id="">
+        {% csrf_token %}
+        otp: <input type="text" name="otp" id=""><br>
+        <input type="submit" value="finish">
+    </form>
+
+</body>
+</html>

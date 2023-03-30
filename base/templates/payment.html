@@ -4,17 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pay here</title>
+    <title>Online Payment Service</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 </head>
 <body>
-    <h3>you will pay {{amount}} to {{merchant.name}}</h3>
-    <form action="{% url 'otp_confirmation' %}" method="post">
-        {% csrf_token %}
-        <input type="text" name="operation_id" hidden value="{{operation_id}}" id="">
-        number: <input type="text" name="phone" id=""><br>
-        pin: <input type="text" name="pin" id=""><br>
-        <input type="submit" value="Pay">
-    </form>
+    <div class="top">
+        <h1>Online Payment Service</h1>
+    </div>
+    <div class="container">
+        <form action="{% url 'otp_confirmation' %}" method="post">
+            <div class="row">
+                <div class="group">
+                    <p>Please enter your wallet credentials to complete the payment process</p>
+                    <p>You'll pay to <b>{{merchant.name}}</b> the following amount <b>{{amount}}</b> IQD </p>
+                </div>
+            </div>
+            {% csrf_token %}
+            <input type="text" name="operation_id" hidden value="{{operation_id}}" id="">
+            <div class="row">
+                <div class="group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="text" name="phone" id="phone" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="group">
+                    <label for="pin">PIN *</label>
+                    <input type="text" name="pin" id="pin" required>
+                </div>
+            </div>
+            <input type="submit" class="submit" value="Pay Now">
+            <p class="hint">* This is not a real <b>Online Payment Service</b> it's just a clone to test the functionality of the website</p>
+        </form>
+    </div>
 
 
 </body>

@@ -5,18 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OTP</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 </head>
 <body>
-    
-    balance: {{balance}} <br>
-    amount: {{amount}} <br> 
+    <div class="top">
+        <h1>Online Payment Service</h1>
+    </div>
 
-    <form action="{% url 'check_otp' %}" method="post">
-        <input type="text" name="operation_id" hidden value="{{operation_id}}" id="">
-        {% csrf_token %}
-        otp: <input type="text" name="otp" id=""><br>
-        <input type="submit" value="finish">
-    </form>
+    <div class="container">
+        <form action="{% url 'check_otp' %}" method="post">
+            <div class="row">
+                <div class="group">
+                    <p>Please enter your OTP value</p>
+                    <p>Your Balance is <b>{{balance}}</b> IQD, and you'll pay the following amount <b>{{amount}}</b> IQD </p>
+                </div>
+            </div>
+            {% csrf_token %}
+            <input type="text" name="operation_id" hidden value="{{operation_id}}" id="">
+            <div class="row">
+                <div class="group">
+                    <label for="otp">OTP *</label>
+                    <input type="text" name="otp" id="otp" required>
+                </div>
+            </div>
+            <input type="submit" class="submit" value="Finish">
+            <p class="hint">* This is not a real <b>Online Payment Service</b> it's just a clone to test the functionality of the website</p>
+        </form>
+    </div>
 
 </body>
 </html>

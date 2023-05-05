@@ -67,10 +67,15 @@ WSGI_APPLICATION = 'zain_cash_test_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv("DB-NAME"), 
+        'USER': os.getenv("DB-USER"), 
+        'PASSWORD': os.getenv("DB-PASSWORD"),
+        'HOST': os.getenv("DB-HOST"), 
+        'PORT': os.getenv("DB-PORT"),
     }
 }
+
 
 
 # Password validation
